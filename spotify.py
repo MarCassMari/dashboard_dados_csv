@@ -13,7 +13,7 @@ dataFrame.set_index("Track", inplace=True)
 
 artists= dataFrame["Artist"].value_counts().index
 
-artist = st.selectbox("Artista",artists)
+artist = st.sidebar.selectbox("Artista",artists)
 dataFilter = dataFrame[dataFrame["Artist"] == artist]
 
 albuns = dataFilter["Album"].value_counts().index
@@ -27,4 +27,3 @@ display = st.checkbox("Mostrar detalhes da música")
 if display:
     st.write("Detalhes do Artista Escolhido")
     st.bar_chart(dataFilterAlbum["Stream"])
-
