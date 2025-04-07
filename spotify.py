@@ -6,7 +6,15 @@ st.set_page_config (
     page_icon="🎵",
     layout="wide",
 )
-dataFrame = pd.read_csv("data/spotify.csv")
+
+@st.cache_data
+def load_data():
+    dataFrame = pd.read_csv("data/spotify.csv")
+    return dataFrame
+
+dataFrame=load_data()
+    
+st.session_state["dataFrameSpotify"] = dataFrame
 
 dataFrame.set_index("Track", inplace=True)
 
